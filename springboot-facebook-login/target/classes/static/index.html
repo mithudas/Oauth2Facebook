@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8" />
+    <title>Demo1212</title>
+    <base href="/" />
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js" ></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js" ></script>
+</head>
+
+
+<body>
+<h1>Demo</h1>
+
+<div class="container unauthenticated">
+    LogIn with facebook : <a href="/login"> click herr</a>
+</div>
+<div class="container authenticated" style="display:none">
+    Logged in as facebook user <span id="user"></span>
+</div>
+
+<script type="text/javascript">
+    $.get("/user", function(data){
+
+    console.log("data>>>>" , data)
+    $("#user").html(data.userAuthentication.details.name);
+    $(".unauthenticated").hide();
+    $(".authenticated").show();
+
+    });
+</script>
+</body>
+
+</html>
